@@ -6,7 +6,7 @@ const pool = mysql2.createPool({
     user : process.env.dbuser,
     password: process.env.dbpasscode,
     database: process.env.dbname
-})
+}).promise()
 
 pool.getConnection((err, connection) => {
     if (err) {
@@ -18,4 +18,6 @@ pool.getConnection((err, connection) => {
 console.log('Connected to MySQL database!');
 
 
-module.exports;
+module.exports = {
+    pool
+}
