@@ -1,0 +1,5 @@
+Send Request 
+
+GET https://localhost:3001/api/profile
+
+Authorization: Bearer

@@ -1,12 +1,10 @@
 const express = require('express')
 const cors = require('cors')
-const app = express()
 const router = express.Router()
 
+const { handleLogout } = require('../controller/logoutController')
 
-router.get('/', (req, res)=>{
-        const data = {name:"sai", age:20}
-        res.send(data)  
-})
+router.get('/', handleLogout );
+
 
 module.exports = router;
