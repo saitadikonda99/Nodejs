@@ -8,8 +8,6 @@ const handleLogout = async (req, res) => {
             return res.sendStatus(401);
         }
 
-        console.log('cookies:', cookies.jwt);
-
         const refreshToken = cookies.jwt;
 
 // Clear the refresh token in the database (Assuming you have a field named 'refreshToken' in your users table)

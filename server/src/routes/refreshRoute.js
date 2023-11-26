@@ -4,7 +4,7 @@ const cors = require('cors')
 
 const { handlerefreshToken } = require('../controller/refreshController')
 
-router.post('/', handlerefreshToken );
+router.get('/', handlerefreshToken );
 
 
 module.exports = router;

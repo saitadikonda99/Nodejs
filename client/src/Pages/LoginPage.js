@@ -1,9 +1,19 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,  } from 'react'
+import { useLocation, Navigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import useAuth from '../hooks/useAuth';
+
 
 
 function LoginPage() {
+    // const { setAuth } = useContext(AuthContext);
+    const { setAuth } = useAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from || "/";
 
     const [formData, setFormData] = useState({
         username: '',
@@ -35,10 +45,20 @@ function LoginPage() {
               }
             );
 
+
+            const accessToken = response?.data?.accessToken;
+            const refreshToken = response?.data?.refreshToken;
+            const role = response?.data?.role;
+            const user = response?.data?.username;
+            const password = response?.data?.password;
+           
+            setAuth({ user, role, password, accessToken, refreshToken });
+           
+            console.log(response.data);
             if (response.status === 200) {
-                window.location.href = '/';
+                navigate(from, { replace: true });
             }
-        } catch (error) {
+        } catch (error) { 
             console.log(error);
             setError(error.message);
         }
