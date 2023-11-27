@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosPrivate from '../hooks/useAxiosPrivate';
+import { Link } from 'react-router-dom';
 
 function Profile() {
   const [data, setData] = useState({});
+  const axios = axiosPrivate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/profile', {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+        const response = await axios.get('http://localhost:3001/profile', {  
           withCredentials: true,
         });
 
@@ -32,6 +31,7 @@ function Profile() {
         <p>{data.name}</p>
         <p>{data.age}</p>
       </div>
+      <Link to="/">Home</Link>
     </div>
   );
 }

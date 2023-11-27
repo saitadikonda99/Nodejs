@@ -15,9 +15,13 @@ function App() {
           
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+
+
                 <Route element={<RequireAuth allowedRoles={['admin']}/>}>
                   <Route path="/profile" element={<Profile />} />
                 </Route>
+
+
           </Route>
           <Route path="/User" element={<User/>}/>
         </Routes>

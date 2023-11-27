@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function Home() {
 
@@ -14,12 +15,11 @@ function Home() {
                 withCredentials: true, // <=========== Add this line
              })
 
-            console.log(response.status);
-            if (response.status === 200) {
+                console.log(response.status);
                 window.location.href = '/login';
-            }
         } catch (error) {
             console.log(error);
+            window.location.href = '/login';
         }
     };
 
@@ -28,6 +28,8 @@ function Home() {
         <div className="HomeComponent-in">
             <h1>Home Page</h1>
             <button onClick={handleLogout}>LogOut</button>
+            <Link to='/user'>user</Link>
+            <Link to='/profile'>profile</Link>
         </div>
     </div>
   )
